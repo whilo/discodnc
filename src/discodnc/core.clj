@@ -42,12 +42,14 @@
 
 
 ;; Assignment 1 a)
+;; Correct: Case 1 is optimal
 (conv (λ 5) (δ 5))
 ;; => #object[unikl.disco.curves.ServiceCurve 0x346ea8ba "SC{(0.0,0.0),0.0}"]
 
 
 
 ;; Assignment 2
+;; Does not match calculation
 (let [a (min (γ 9 20) (γ 2 76))
       b (max (β 1 0) (β 5 2.4) (β 15 4.8))]
   [(type a) (type b)]
