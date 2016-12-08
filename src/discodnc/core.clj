@@ -52,7 +52,7 @@
 ;; Does not match calculation
 (let [a (min (γ 9 20) (γ 2 76))
       b (max (β 1 0) (β 5 2.4) (β 15 4.8))]
-  [(type a) (type b)]
+  ;; TODO why is upcasting necessary for curves?
   (deconv (ArrivalCurve. a) (ServiceCurve. b)))
 ;; => #object[unikl.disco.curves.ArrivalCurve 0x30a27ac "AC{(0.0,0.0),0.0;!(0.0,84.8),2.400000000000001;(3.0,92.0),2.0}"]
 
