@@ -9,7 +9,6 @@
 
 ;; reduce Java names to formulas
 
-
 (defn β [R T]
   (ServiceCurve/createRateLatency (double T) (double R)))
 
@@ -20,15 +19,11 @@
   (ServiceCurve/createDelayedInfiniteBurst (double T)))
 
 
-
 (defn conv [a b]
   (Convolution/convolve a b))
 
 (defn deconv [a b]
   (Deconvolution/deconvolve a b))
-
-(conv (λ 5) (δ 5))
-;; #object[unikl.disco.curves.ServiceCurve 0x346ea8ba "SC{(0.0,0.0),0.0}"]
 
 (defn γ [r b]
   (ArrivalCurve/createTokenBucket (double r) (double b)))
@@ -46,11 +41,18 @@
    (reduce min (min f g) gs)))
 
 
+;; Assignment 1 a)
+(conv (λ 5) (δ 5))
+;; => #object[unikl.disco.curves.ServiceCurve 0x346ea8ba "SC{(0.0,0.0),0.0}"]
+
+
+
+;; Assignment 2
 (let [a (min (γ 9 20) (γ 2 76))
       b (max (β 1 0) (β 5 2.4) (β 15 4.8))]
   [(type a) (type b)]
   (deconv (ArrivalCurve. a) (ServiceCurve. b)))
-;; #object[unikl.disco.curves.ArrivalCurve 0x30a27ac "AC{(0.0,0.0),0.0;!(0.0,84.8),2.400000000000001;(3.0,92.0),2.0}"]
+;; => #object[unikl.disco.curves.ArrivalCurve 0x30a27ac "AC{(0.0,0.0),0.0;!(0.0,84.8),2.400000000000001;(3.0,92.0),2.0}"]
 
 
 
